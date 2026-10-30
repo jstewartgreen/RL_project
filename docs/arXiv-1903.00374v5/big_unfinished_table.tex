@@ -1,0 +1,60 @@
+% \paragraph{Big table}
+% \setlength{\belowcaptionskip}{-17pt}
+%\begin{wraptable}{r}{0.55\textwidth}
+\begin{table}[H]
+%\vspace{-17pt}
+\begin{center}
+{\scriptsize{
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\hline
+Game          & random & ours@200K & ours@200(*) & ours@1M  & PPO@200K & PPO@1M & PPO@10M &  Dop \\
+\hline
+Pong           & -20.335 & 20         & 20.7    \\
+Breakout       & 1.105   & 8          & 274.8     \\
+Freeway        & 0.005   & 26         & 32.5    \\
+Boxing         & 1.04    & 32         & 94.6     \\
+Crazy Climber  & 7565    & 35800      & 110202 \\
+Kung-Fu Master & 594     & 2600       & 23310.3  \\
+Frostbite      & 73.6    & 260        & 314.2   \\
+Seaquest       & 79.2    & 260        & 1204   \\
+Hero           & 378.9   & 2990       & not reported  \\
+Berzerk        & 146.55  & 920        & not reported   \\
+Pong           & -20.335 & 20         & 20.7    \\
+Breakout       & 1.105   & 8          & 274.8     \\
+Freeway        & 0.005   & 26         & 32.5    \\
+Boxing         & 1.04    & 32         & 94.6     \\
+Crazy Climber  & 7565    & 35800      & 110202 \\
+Kung-Fu Master & 594     & 2600       & 23310.3  \\
+Frostbite      & 73.6    & 260        & 314.2   \\
+Seaquest       & 79.2    & 260        & 1204   \\
+Hero           & 378.9   & 2990       & not reported  \\
+Berzerk        & 146.55  & 920        & not reported   \\
+Pong           & -20.335 & 20         & 20.7    \\
+Breakout       & 1.105   & 8          & 274.8     \\
+Freeway        & 0.005   & 26         & 32.5    \\
+Boxing         & 1.04    & 32         & 94.6     \\
+Crazy Climber  & 7565    & 35800      & 110202 \\
+Kung-Fu Master & 594     & 2600       & 23310.3  \\
+Frostbite      & 73.6    & 260        & 314.2   \\
+Seaquest       & 79.2    & 260        & 1204   \\
+Hero           & 378.9   & 2990       & not reported  \\
+Berzerk        & 146.55  & 920        & not reported   \\
+Pong           & -20.335 & 20         & 20.7    \\
+Breakout       & 1.105   & 8          & 274.8     \\
+Freeway        & 0.005   & 26         & 32.5    \\
+Boxing         & 1.04    & 32         & 94.6     \\
+Crazy Climber  & 7565    & 35800      & 110202 \\
+Kung-Fu Master & 594     & 2600       & 23310.3  \\
+Frostbite      & 73.6    & 260        & 314.2   \\
+Seaquest       & 79.2    & 260        & 1204   \\
+Hero           & 378.9   & 2990       & not reported  \\
+Berzerk        & 146.55  & 920        & not reported   \\
+Hero           & 378.9   & 2990       & not reported  \\
+Berzerk        & 146.55  & 920        & not reported   \\
+\hline
+\end{tabular}
+}}}
+\end{center}
+\label{tab:main}
+\caption{Our model-based results for 42 games trained using various algorithms: 100K ours at 200K and 1M, ours@200(*)  - an impure version of our algorithm which is allowed to train on a real environment, PPO and Dopamina.}  
+\end{table}

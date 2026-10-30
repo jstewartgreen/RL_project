@@ -1,0 +1,34 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance = 0.9cm, thick, scale=1., 
+every node/.style={scale=1.}, nodes = {align = center},>=latex]
+  \node[Minimum Width = loop, shape = ellipse, fill = red] (imp-sol)
+    {\texttt{Gather observations and rewards using $\pi$ in $\env$}\\ 
+    \texttt{and use them to improve model $\env'$}};
+  \node[Minimum Width = loop, fill = yellow, below = of imp-sol] (rec-box)
+    {\texttt{train $\pi$ in $\env'$}\\ \texttt{using a model-free algorithm}};
+  \node[shift = (left:.7*x_node_dist)] at
+    ($(imp-sol.west|-imp-sol.south)!.5!(rec-box.north west)$) (for-1) {};
+  \node[above = of for-1] (for-3) {};
+    % {$\texttt{action}$};
+  \node[shift = (right:.7*x_node_dist),minimum size = 0pt] at
+    ($(imp-sol.east|-imp-sol.south)!.5!(rec-box.north east)$) (for-2) {};
+  \node[above = of for-2] (for-4) {};
+    % {$\texttt{state}$};
+  \begin{scope}[on background layer]
+    \node[fit = (for-1)(for-2)(imp-sol)(rec-box), basic box = blue,
+      header = Vanilla model-based RL loop] (dmft-l) {};
+  \end{scope}
+  % \draw[->] (rec-box) |- ++(1,-1) |- (imp-sol);
+  % \path[very thick, blue, hv] (rec-box) edge[->] (for-1) edge[<-] (imp-sol);
+  \path[very thick, blue, hv] (rec-box) edge[-] (for-3) edge[<-] (for-4)
+                              (imp-sol) edge[-] (for-4) edge[<-] (for-3);
+
+%  \node[left = of dmft-l, basic box = green, header = Corpus]
+%    (dmft-p) {};
+%  \path[fat blue line, ->, dashed, vh] (dmft-p) edge
+%    ({$(dmft-p.east)$}-|dmft-l.west);
+\end{tikzpicture}
+\caption{The learning model-based learning loop; $\env$ is the original game and $\env'$ is a simulator of $\env$. }
+\label{figure_basic_loop}
+\end{figure}

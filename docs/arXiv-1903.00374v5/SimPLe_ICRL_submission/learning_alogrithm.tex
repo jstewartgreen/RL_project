@@ -1,0 +1,72 @@
+\section{Simulated Policy Learning (SimPLe)}
+\label{subsec:model}
+\label{sec:mbrl}
+
+% TODO_PM_21_05. Shorter version:
+% Reinforcement learning is concerned with sequential decision-making problems. Given an \textit{environment}, which changes its \textit{state} and provides \textit{rewards} based on the performed \textit{actions}, the goal is to find an optimal behavior (\textit{policy} $\pi$) of an agent, which based on the current observation from the environment performs an appropriate action to maximize the discounted sum of future rewards.
+
+% In this work we focus on Atari games, which provide visual observations of the current game screen. Because this image does not convey the full state of the environment, we stack the four last frames to provide richer input to the agent.
+
+% Our method, apart from an Atari 2600 emulator environment $env$, uses \textit{a neural network simulated environment} $env'$ which we call a \textit{world model}, trained to mimic dynamics of $env$. Our principal aim is to train a policy $\pi$ using the simulated environment $env'$ so that $\pi$ achieves good performance in the original environment $env$. In our training process, summarized in Algorithm~\ref{alg:basic_loop}, we aim to use as few interactions with $env$ as possible. As this is unlikely to capture all aspects of the environment, we use an iterative data-aggregation method consisting of collecting data from $env$ using the policy, training the model $env'$ on the collected data and training the policy using $env'$. 
+
+% \begin{figure}  % \small
+% \removelatexerror
+% \begin{algorithm}[H]
+% \caption{Pseudocode for SimPLe}\label{dpll}
+% \begin{algorithmic}
+% \STATE Initialize policy $\boldsymbol\pi$, 
+%   model parameters $env'$, $\mathbf{D} = \emptyset$
+% \WHILE{not done} 
+% \STATE \underline{$\triangleright$ collect observations from real env.}
+% \WHILE{not enough observations}
+% \STATE $a \gets \boldsymbol\pi(s)$
+% \STATE $(s' ,r) \gets env(a)$
+% \STATE $\mathbf{D} \gets \mathbf{D} \cup (s,a,r,s')$
+% \STATE $s \leftarrow s'$
+% \ENDWHILE
+% \STATE \underline{$\triangleright$ update model using collected data.}
+% \STATE $\boldsymbol\theta \gets \text{TRAIN\_SUPERVISED}(env', \mathbf{D})$
+% \STATE \underline{$\triangleright$ update policy using world model.}
+% \STATE $\boldsymbol\pi \gets \text{TRAIN\_RL}(\boldsymbol\pi, \boldsymbol\theta)$
+% \ENDWHILE
+% \end{algorithmic}
+% \label{basic_loop}
+% \label{alg:basic_loop}
+% \end{algorithm}
+% \end{figure}
+
+Reinforcement learning is formalized in Markov decision processes (MDP). An MDP is defined as a tuple $(\mathcal{S}, \Aa, P, r, \gamma)$, where $\mathcal{S}$ is a state space, $\Aa$ is a set of actions available to an agent, $P$ is the unknown transition kernel, $r$ is the reward function and $\gamma\in (0,1)$ is the discount factor. 
+In this work we refer to MDPs as environments and assume % that environments fulfill the following assumptions:
+that environments do not provide direct access to the state (i.e., the RAM of Atari 2600 emulator). Instead we use visual observations, typically $210\times 160$ RGB images. A single image does not determine the state. 
+% This is still observation not state.
+In order to reduce environment's partial observability, we stack four consecutive frames and use it as the observation.
+A reinforcement learning agent interacts with the MDP by issuing actions according to a policy. Formally, policy $\pi$ is a mapping from states to probability distributions over $\mathcal{A}$. The quality of a policy is measured by the value function $\mathbb{E}_{\pi}\left(\sum_{t=0}^{+\infty}\gamma^t r_{t+1}|s_0=s \right)$, which for a starting state $s$ estimates the total discounted reward gathered by the agent.
+
+\begin{wrapfigure}[14]{r}{0.45\textwidth}
+\removelatexerror
+\vspace{-0.5cm}
+\begin{algorithm}[H]
+\caption{Pseudocode for SimPLe}\label{dpll}
+\begin{algorithmic}
+\STATE Initialize policy $\boldsymbol\pi$
+\STATE Initialize model parameters $\boldsymbol\theta$ of $env'$
+\STATE Initialize empty set $\mathbf{D}$
+\WHILE{not done} 
+\STATE \underline{$\triangleright$ collect observations from real env.}
+\STATE $\mathbf{D} \gets \mathbf{D} \cup \text{COLLECT($env$, $\pi$)}$
+\STATE \underline{$\triangleright$ update model using collected data.}
+\STATE $\boldsymbol\theta \gets \text{TRAIN\_SUPERVISED}(env', \mathbf{D})$
+\STATE \underline{$\triangleright$ update policy using world model.}
+\STATE $\boldsymbol\pi \gets \text{TRAIN\_RL}(\boldsymbol\pi, env')$
+\ENDWHILE
+\end{algorithmic}
+\label{basic_loop}
+\label{alg:basic_loop}
+\end{algorithm}
+%\vspace{-0.8cm}
+\end{wrapfigure}
+
+In Atari 2600 games our goal is to find a policy which maximizes the value function from the beginning of the game.
+Crucially, apart from an Atari 2600 emulator environment $env$ we will use \textit{a neural network simulated environment} $env'$ which we call a \textit{world model} and describe in detail in Section \ref{sec:world_models}. The environment $env'$ shares the action space and reward space with $env$ and produces visual observations in the same format, as it will be trained to mimic $env$.  Our principal aim is to
+train a policy $\pi$ using a simulated environment $env'$ so that $\pi$ achieves good performance in the original environment $env$. In this training process we aim to use as few interactions with $env$ as possible. 
+The initial data to train $env'$ comes from random rollouts of $env$. As this is unlikely to capture all aspects of $env$, we use the iterative method presented in Algorithm~\ref{alg:basic_loop}.

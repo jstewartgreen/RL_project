@@ -1,0 +1,83 @@
+\section{World Models}
+\label{sec:world_models}
+\label{sec:architectures}
+\label{sec:training}
+
+%\begin{comment}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/model_basic_disc.pdf}
+%\includegraphics[width=1.\textwidth]{figures/cycle.pdf}
+\caption{Architecture of the proposed stochastic model with discrete latent. The input to the model is four stacked frames (as well as the action selected by the agent) while the output is the next predicted frame and expected reward. Input pixels and action are embedded using fully connected layers, and there is per-pixel softmax ($256$ colors) in the output. This model has two main components. First, the bottom part of the network which consists of a skip-connected convolutional encoder and decoder. To condition the output on the actions of the agent, the output of each layer in the decoder is multiplied with the (learned) embedded action. Second part of the model is a convolutional inference network which approximates the posterior given the next frame similar to~\citet{sv2p}. At training time, the sampled latent values from the approximated posterior will be discretized into bits. To keep the model differentiable, the backpropagation bypasses the discretization following~\citet{auto_discrete}. A third LSTM based network is trained to approximate each bit given the previous ones. At inference time, the latent bits are predicted auto-regressively using this network. The deterministic model has the same architecture as this figure but without the inference network.} 
+\label{fig:full_discrete}
+\end{figure*}
+% \end{comment}
+
+
+% In principle any model that approximates the following transition function can be used as a world model:
+%$$
+% $(s_{t+1}, r_{t+1}) = T(s_{0:t}, a_{0:t})$
+%$$
+% where $s_t, a_t,$ and $r_t$ are the state, action and reward at time-step $t$. Hence, any world model has two major components: next frame predictor and reward predictor. 
+
+%In practice, scalability and stability of a model are crucial which limits the practicality of current video prediction models. We found out that merging the reward predictor and frame predictor helps with both performance and convergence speed. More precisely, merging the reward model can help the next frame predictor to get \textit{more important} pixels right whereas in the absence of such signal the video model receives an equal penalty for each pixel.
+
+A crucial decision in the design of world models   % introduced in Section \ref{sec:mbrl}
+% Another crucial design element for designing an effective world model 
+is the inclusion of stochasticity. Although Atari is known to be a deterministic environment, it is stochastic given only a limited horizon of past observed frames (in our case $4$ frames). The level of stochasticity is game dependent; however, it can be observed in many Atari games. An example of such behavior is the \textit{pause} after a player scores in \texttt{Pong}. These pauses are longer than 4 frames, so a model looking at only the past 4 frames does not know when a new round of the game should start and may keep predicting paused frames.
+% \todo[inline]{BO1.21. Have we ever observed stochastic model escaping from pause state? Although it should be able to do it in theory, I haven't seen examples of this. I think that random starts are what fixes this issue.\\MB.1.22 I did observe this with SV2P.\\ LK.1.22: I did see it with SD.}
+
+% Considering these challenges, 
+In search for an effective world model we have experimented with various architectures, both new and modified versions of existing ones. In this section, we describe the architectures and the rationale behind our design decisions.  In Section \ref{sec:analysis} we compare the performance of these models.
+
+
+
+\subsection{Deterministic Model}
+Our basic architecture, presented as part of Figure~\ref{fig:full_discrete}, resembles the convolutional feedforward network from \citet{video_prediction}.  The input $X$ consists of four consecutive game frames and an action $a$. Stacked convolution layers process the visual input. The actions are one-hot-encoded and embedded in a vector which is multiplied channel-wise with the output of the convolutional layers. 
+%Fully connected layers then process it and deconvolved. 
+The network outputs the next frame of the game and the value of the reward.% Predicted rewards in \pong are $-1,0,1$ and are the same as in the original ALE environment (see Section \ref{sec:envs}). Predicted rewards  \breakout\ are $0$ and $1$: every positive reward is considered as $1$. Predicted rewards in the dense version of \freeway\ are $0$, $0.01$ and $1$. % We truncate rewards to $3$ possible values $in \pong:
+
+% In most of our experiments we choose the input to be four frames as with our choice of environments they fully identify the state of the game. The network is the workhorse of our simulated environment $env'$. The environment contains a memory $M$ of four frames, which is initialized with frames retrieved from the real environment. Given an action, $a$ the tuple $(M,a)$ is processed by the network outputting a new frame and a reward $r$. The oldest frame of $M$ is discarded and the new one is included. 
+
+%\todo{pm: The next section is too much of storytelling}
+%\todo{you can shorten it and put the rest of details as a table}
+% As shown in model-free experiments \cite{dqn,dqn2,ppo,acktr,rainbow,a3c}, using $4$ frames seems to be sufficient to train agents in a majority of Atari games and the same design decision we applied to neural network simulators. % the case of training of
+% % Why $4$ frames? It is enough for reinforcement learning in many games.
+% % Since in this work
+% Another design decision concerned resizing and possible augmentation of the input frame marked as $X$ in Figure \ref{fig:kanapa}. We decided to feed the original $4$ RGB frames of the size $160\times 210$ pixels, meaning that a single input to the neural network is a tensor of the size $4 \times 160\times 210\times 3$ with a single cell of the tensor ranging from $0$ to $255$. In our design, the same is true about the output $X'$.
+%\todo{Important: no pooling}
+
+In our experiments, we varied details of the architecture above. In most cases, we use a stack of four convolutional layers with $64$ filters followed by three dense layers (the first two have $1024$ neurons). The dense layers are concatenated with $64$ dimensional vector with a learnable action embedding. Next, three deconvolutional layers of $64$ filters follow. An additional deconvolutional layer outputs an image of the original $105\times 80$ size. The number of filters is either $3$ or $3 \times 256$. In the first case, the output is a real-valued approximation of pixel's RGB value. In the second case, filters are followed by softmax producing a probability distribution on the color space. The reward is predicted by a softmax attached to the last fully connected layer. 
+We used dropout equal to $0.2$ and layer normalization. 
+
+\paragraph{Loss functions.}
+The visual output of our networks is either one float per pixel/channel or the categorical 256-dimensional softmax. In both cases, we used the \textit{clipped loss} $\max(Loss, C)$ for a constant $C$. We found that clipping was crucial for improving the prediction power of the models (both measured with the correct reward predictions per sequence metric and successful training using Algorithm~\ref{dpll}). We conjecture that the clipping substantially decreases the magnitude of gradients stemming from fine-tuning of big areas of background consequently letting the optimization process concentrate on small but important areas (e.g. the ball in Pong). In our experiments, we set $C=10$ for $L_2$ loss on pixel values and to $C=0.03$ for softmax loss.
+Note that this means that when the level of confidence about the correct pixel value exceeds $97\%$  (as $-\ln(0.97) \approx 0.03$) we get no gradients from that pixel any longer.
+
+\paragraph{Scheduled sampling.}
+The simulator $env'$ consumes its own predictions from previous steps. Thus, due to compounding errors, the model may drift out of the area of its applicability. Following \cite{BengioVJS15}, we mitigate this problem by randomly replacing in training some frames of the input $X$ by the prediction from the previous step. Typically, we linearly increase the mixing probability during training arriving at $100\%$.
+
+\subsection{Stochastic Models}
+%In stochastic environments, explicitly modeling the stochasticity of the environment is crucial for a quality world model. Although Atari is known as a deterministic environment, it can act stochastically in practical settings. The main source of such stochasticities is the limited number of input frames as well the sprite occlusion/flickering in the observed frames. 
+A stochastic model can be used to deal with limited horizon of past observed frames as well as sprites occlusion and flickering which results to higher quality predictions. 
+
+
+Inspired by~\citet{sv2p}, we used a variational autoencoder ~\citep{kingma2013auto} to model the stochasticity of the environment. In this model, an additional network receives the input frames as well as the future target frame as input and approximates the distribution of the posterior. At each timestep, a latent value $z_t$ is sampled from this distribution and will be passed as input to the original predictive model. At test time, the latent values are sampled from an assumed prior 
+$\mathcal{N}(\mathbf{0}, \mathbf{I})$. 
+To match the assumed prior and the approximate, we use the Kullback–Leibler divergence term as an additional loss term~\citep{sv2p}.
+
+
+Nonetheless, we noticed two major issues with this model. First, the weight of KL divergence loss term is game dependent and has to be optimised as a hyper-parameter which is not practical if one wants to deal with a broad portfolio of Atari games. Second, this weight is usually a very small number in the range of $[e^{-5}, e^{-3}]$ which means that the approximated posterior can diverge significantly from the assumed prior. This can result in previously unseen latent values at inference time that lead to poor predictions. We address these issues by utilizing a discrete latent variable similar to~\citet{auto_discrete}. 
+
+As visualized in Figure~\ref{fig:full_discrete}, the proposed stochastic model with discrete latent variables discretizes the latent values into bits (zeros and ones) while training an auxiliary LSTM-based~\cite{hochreiter1997long} recurrent network to predict these bits autoregressively. At inference time, the latent bits will be generated by this auxiliary network in contrast to sampling from a prior. To make the predictive model more robust to unseen latent bits, we add uniform noise to approximated latent values before discretization and apply dropout~\cite{srivastava2014dropout} on bits after discretization.
+% Already in caption: Please note that similar to~\citet{neural_discrete},
+% the backpropagation bypasses the discretization operation. 
+% MB: move to appendix
+% \begin{figure*}[t]
+% \centering
+% \includegraphics[width=0.8\textwidth]{figures/model_basic_stoch.pdf}
+% \caption{Architecture of stochastic model. The generative network is the same as Figure~\ref{fig:model_det} with an additional convolutional inference network to approximates the posterior given the next frame. The latent values will be sampled from approximated posterior and an assumed prior of $\mathcal{N}(\mathbf{0}, \mathbf{I})$ at training and inference time respectively.}
+% \label{fig:model_stoch}
+% \end{figure*}
+
+

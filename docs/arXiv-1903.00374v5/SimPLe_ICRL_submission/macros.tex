@@ -1,0 +1,180 @@
+
+% if you need to pass options to natbib, use, e.g.:
+% \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading nips_2018
+
+% ready for submission
+% \usepackage{nips_2018}
+
+% to compile a preprint version, e.g., for submission to arXiv, add
+% add the [preprint] option:
+% \usepackage[preprint]{nips_2018}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+% \usepackage[final]{nips_2018}
+
+% to avoid loading the natbib package, add option nonatbib:
+% \usepackage[nonatbib]{nips_2018}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+% \usepackage[colorlinks=true, linkcolor=black, citecolor=black, filecolor=black, urlcolor=black]{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{amsmath}
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+
+% \usepackage{algorithm2e}
+% \usepackage[noend]{algpseudocode}
+\usepackage[ruled, vlined, linesnumbered]{algorithm2e}
+% \algsetup{linenosize=\small}
+% \usepackage{etoolbox}\AtBeginEnvironment{algorithm}{\small}
+
+\usepackage{todonotes}
+
+\newcommand{\env}{{\texttt{env}}}
+\newcommand{\Env}{{\texttt{Env}}}
+\newcommand{\Aa}{{\mathcal A}}
+\newcommand{\Rr}{{\mathcal R}}
+\newcommand{\Oo}{{\mathcal O}}
+\newcommand{\Dd}{{\mathcal D}}
+\newcommand{\Prob}{{\mathcal P}}
+
+\newcommand{\pong}{\texttt{Pong}}
+\newcommand{\breakout}{\texttt{Breakout}}
+\newcommand{\freeway}{\texttt{Freeway}}
+\newcommand{\bankh}{\texttt{Bank Heist}}
+\newcommand{\boxing}{\texttt{Boxing}}
+\newcommand{\bowling}{\texttt{Bowling}}
+\newcommand{\asterix}{\texttt{Asterix}}
+\newcommand{\seaquest}{\texttt{Seaquest}}
+\newcommand{\hero}{\texttt{Hero}}
+\newcommand{\crazyclimber}{\texttt{Crazy Climber}}
+\newcommand{\kungfumaster}{\texttt{Kung Fu Master}}
+\newcommand{\atlantis}{\texttt{Atlantis}}
+\newcommand{\battlezone}{\texttt{Battle Zone}}
+\newcommand{\privateeye}{\texttt{Private Eye}}
+
+
+\usepackage[font={footnotesize,it}]{caption}
+
+\newtheorem{definition}{Definition}
+
+\usetikzlibrary{shapes.geometric,backgrounds,
+  positioning-plus,node-families,calc}
+\tikzset{
+  basic box/.style = {
+    shape = rectangle,
+    align = center,
+    draw  = #1,
+    fill  = #1!25,
+    rounded corners},
+  header node/.style = {
+    Minimum Width = header nodes,
+    font          = \strut\Large\ttfamily,
+    text depth    = +0pt,
+    fill          = white,
+    draw},
+  header/.style = {%
+    inner ysep = +1.5em,
+    append after command = {
+      \pgfextra{\let\TikZlastnode\tikzlastnode}
+      node [header node] (header-\TikZlastnode) at (\TikZlastnode.north) {#1}
+      node [span = (\TikZlastnode)(header-\TikZlastnode)]
+        at (fit bounding box) (h-\TikZlastnode) {}
+    }
+  },
+  hv/.style = {to path = {-|(\tikztotarget)\tikztonodes}},
+  vh/.style = {to path = {|-(\tikztotarget)\tikztonodes}},
+  fat blue line/.style = {ultra thick, blue}
+}
+
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,positioning}
+
+\definecolor{echoreg}{HTML}{2cb1e1}
+\definecolor{olivegreen}{rgb}{0,0.6,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\usepackage{etoolbox}
+
+\newtoggle{redraw}
+\newtoggle{redraw2}
+
+\usepackage{wrapfig}
+
+\tikzset{%
+pics/cube/.style args={#1/#2/#3/#4}{code={%
+	\begin{scope}[line width=#4mm]
+	\begin{scope}
+	\clip (-#1,-#2,0) -- (#1,-#2,0) -- (#1,#2,0) -- (-#1,#2,0) -- cycle;
+	\filldraw (-#1,-#2,0) -- (#1,-#2,0) -- (#1,#2,0) -- (-#1,#2,0) -- cycle;
+	\end{scope}
+\iftoggle{redraw}{%
+}{%
+	\begin{scope}
+	\clip (-#1,-#2,0) -- (-#1-#3,-#2,-#3) -- (-#1-#3,#2,-#3) -- (-#1,#2,0) -- cycle;
+	\filldraw (-#1,-#2,0) -- (-#1-#3,-#2,-#3) -- (-#1-#3,#2,-#3) -- (-#1,#2,0) -- cycle;
+	\end{scope}
+}
+\iftoggle{redraw2}{%
+}{
+	\begin{scope}
+	\clip (-#1,#2,0) -- (-#1-#3,#2,-#3) -- (#1-#3,#2,-#3) -- (#1,#2,0) -- cycle;
+	\filldraw (-#1,#2,0) -- (-#1-#3,#2,-#3) -- (#1-#3,#2,-#3) -- (#1,#2,0) -- cycle;
+	\end{scope}
+}
+	\node[inner sep=0] (-A) at (-#1-#3*0.5, 0, -#3*0.5) {};
+	\node[inner sep=0] (-B) at (#1-#3*0.5, 0, -#3*0.5) {};
+	
+	\coordinate (-V) at (#1, #2);
+	\coordinate (-W) at (#1, -#2);
+	\end{scope}
+}}}
+
+% macros for recurrent simulators
+
+\usepackage{amsmath}
+
+\renewcommand{\figref}[1]{Fig. \ref{#1}}
+\renewcommand{\secref}[1]{Sec. \ref{#1}}
+\newcommand{\appref}[1]{Appendix \ref{#1}}
+\definecolor{myred}{cmyk}{0,0.9,0.9,0.1}
+\definecolor{myblue}{cmyk}{0,0.3,0.9,0.1}
+\newcommand{\myred}{\color{myred}}
+\newcommand{\myblue}{\color{myblue}}
+\newcommand{\PDT}{PDT}
+\newcommand{\ODT}{ODT}
+\newcommand{\OD}{observation-dependent} 
+\newcommand{\PD}{prediction-dependent} 
+\setlength{\bibsep}{0.2pt}
+
+\newcommand{\myvec}[1]{\mathbf{#1}}
+\renewcommand{\va}{\myvec{a}}
+\renewcommand{\vc}{\myvec{c}}
+\renewcommand{\vf}{\myvec{f}}
+\renewcommand{\vh}{\myvec{h}}
+\renewcommand{\vi}{\myvec{i}}
+\renewcommand{\vo}{\myvec{o}}
+\renewcommand{\vs}{\myvec{s}}
+\renewcommand{\vv}{\myvec{v}}
+\renewcommand{\vx}{\myvec{x}}
+\renewcommand{\vy}{\myvec{y}}
+\renewcommand{\vz}{\myvec{z}}
+\newcommand{\vW}{\myvec{W}}
+\newcommand{\ha}{\vv}
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+\newcommand{\ie}{\emph{i.e.}}
+\newcommand{\eg}{\emph{e.g.}}
+
+
+%\usepackage{caption}
+% \captionsetup{font=footnotesize}
+
+\makeatletter
+\newcommand{\removelatexerror}{\let\@latex@error\@gobble}
+\makeatother

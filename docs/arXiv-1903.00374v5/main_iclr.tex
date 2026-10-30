@@ -1,0 +1,130 @@
+
+\documentclass{article} % For LaTeX2e
+\usepackage{iclr2020_conference,times}
+
+%\iclrfinalcopy
+
+\input{math_commands.tex}
+\input{macros.tex}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{algorithmic}
+\usepackage{pdflscape}
+
+\usepackage{titlesec}
+% \titlespacing{\section}{0pt}{0pt}{-5pt}
+% \titlespacing{\subsection}{0pt}{0pt}{-3pt}
+% \titlespacing{\subsubsection}{0pt}{0pt}{-3pt}
+
+\usepackage{etoolbox}
+
+%\setlength{\headsep}{0.25in} FBL
+
+\iclrfinalcopy
+
+\makeatletter % FBL
+% patch \maketitle so that it doesn't center
+\patchcmd{\@maketitle}{center}{flushleft}{}{} % FBL
+\patchcmd{\@maketitle}{center}{flushleft}{}{} % FBL
+% patch \maketitle so that the font size for the title is normal
+% \patchcmd{\@maketitle}{\LARGE}{\normalsize}{}{}
+
+% patch the patch by authblk so that the author block is flush left
+% FIX Blazej
+% \def\maketitle{{%
+%   \renewenvironment{tabular}[2][]
+%     {\begin{flushleft}}
+%     {\end{flushleft}}
+%   \AB@maketitle}}
+% \makeatother % improved author and affiliation design
+% \setlength{\affilsep}{1em}
+
+
+\title{Model Based Reinforcement Learning\\ for Atari}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+% \author{Antiquus S.~Hippocampus, \& Amelie P. Amygdale \thanks{ Use footnote for providing further information
+% about author (webpage, alternative address)---\emph{not} for acknowledging
+% funding agencies.  Funding acknowledgements go at the end of the paper.} \\
+% Department of Computer Science\\
+% Cranberry-Lemon University\\
+% Pittsburgh, PA 15213, USA \\
+% \texttt{\{hippo,brain,jen\}@cs.edu} \\
+% \And
+% Ji Q. Ren \& Yevgeny LeNet \\
+% Department of Computational Neuroscience \\
+% University of the Witwatersrand \\
+% Joburg, South Africa \\
+% \texttt{\{robot,net\}@wits.ac.za} \\
+% \AND
+% Coauthor \\
+% Affiliation \\
+% Address \\
+% \texttt{email}
+% }
+
+\author{
+ \centerline{\L{}ukasz Kaiser$^{1,*}$, Mohammad Babaeizadeh$^{1,*}$,  Piotr Mi\l{}os$^{2,3,*}$, Błażej Osiński$^{2,4,}$
+ \thanks{Equal contribution, authors listed in random order. BO performed the work partially
+during an internship at Google Brain. Correspondence to: \texttt{b.osinski@mimuw.edu.pl}}}\\
+ \centerline{\textbf{Roy H. Campbell$^5$, Konrad Czechowski$^4$, Dumitru Erhan$^1$, Chelsea Finn$^{1,6}$,}}\\
+ \centerline{\textbf{Piotr Kozakowski$^4$, Sergey Levine$^{1}$, Afroz Mohiuddin$^1$, Ryan Sepassi$^1$,}}\\
+ \centerline{\textbf{George Tucker$^1$,  Henryk Michalewski$^4$}}\\
+ \centerline{$^1$Google Brain, $^2$deepsense.ai, $^3$Institute of Mathematics of the Polish Academy of Sciences,}\\
+ \centerline{$^4$Faculty of Mathematics, Informatics and Mechanics, University of Warsaw,} \\
+ \centerline{$^5$University of Illinois at Urbana–Champaign, $^6$Stanford University}
+}
+
+% \newcommand{\fix}{\marginpar{FIX}}
+% \newcommand{\new}{\marginpar{NEW}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  Model-free reinforcement learning (RL) can be used to learn effective policies for complex tasks, such as Atari games, even from image observations. However, this typically requires very large amounts of interaction -- substantially more, in fact, than a human would need to learn the same games. How can people learn so quickly? Part of the answer may be that people can learn how the game works and predict which actions will lead to desirable outcomes. In this paper, we explore how video prediction models can similarly enable agents to solve Atari games with fewer interactions than model-free methods. We describe Simulated Policy Learning (SimPLe), a complete model-based deep RL algorithm based on video prediction models and present a comparison of several model architectures, including a novel architecture that yields the best results in our setting. Our experiments evaluate SimPLe on a range of Atari games in low data regime of 100k interactions between the agent and the environment, which corresponds to two hours of real-time play. In most games SimPLe outperforms state-of-the-art model-free algorithms, in some games by over an order of magnitude.
+\end{abstract}
+
+\input{pm_introduction}
+
+\input{related_work}
+
+\input{learning_alogrithm.tex}
+
+\input{architectures}
+
+\input{policies}
+
+% In NeurIPS version experiments are merged into analysis.
+% \input{experiments}
+
+\input{analysis}
+
+\input{conclusion}
+
+\bibliography{model_based}
+\bibliographystyle{iclr2020_conference}
+
+\input{appendix_experiments}
+
+\end{document}

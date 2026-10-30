@@ -1,0 +1,441 @@
+\begin{thebibliography}{55}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Alaniz(2018)]{alaniz2018deep}
+Stephan Alaniz.
+\newblock Deep reinforcement learning with model learning and monte carlo tree
+  search in minecraft.
+\newblock \emph{arXiv preprint arXiv:1803.08456}, 2018.
+
+\bibitem[Azizzadenesheli et~al.(2018)Azizzadenesheli, Yang, Liu, Brunskill,
+  Lipton, and Anandkumar]{gats}
+Kamyar Azizzadenesheli, Brandon Yang, Weitang Liu, Emma Brunskill, Zachary~C.
+  Lipton, and Animashree Anandkumar.
+\newblock Sample-efficient deep {RL} with generative adversarial tree search.
+\newblock \emph{CoRR}, abs/1806.05780, 2018.
+
+\bibitem[Babaeizadeh et~al.(2017{\natexlab{a}})Babaeizadeh, Finn, Erhan,
+  Campbell, and Levine]{sv2p}
+Mohammad Babaeizadeh, Chelsea Finn, Dumitru Erhan, Roy~H. Campbell, and Sergey
+  Levine.
+\newblock Stochastic variational video prediction.
+\newblock \emph{ICLR}, 2017{\natexlab{a}}.
+
+\bibitem[Babaeizadeh et~al.(2017{\natexlab{b}})Babaeizadeh, Frosio, Tyree,
+  Clemons, and Kautz]{ga3c}
+Mohammad Babaeizadeh, Iuri Frosio, Stephen Tyree, Jason Clemons, and Jan Kautz.
+\newblock Reinforcement learning through asynchronous advantage actor-critic on
+  a {GPU}.
+\newblock In \emph{5th International Conference on Learning Representations,
+  {ICLR} 2017, Toulon, France, April 24-26, 2017, Conference Track
+  Proceedings}. OpenReview.net, 2017{\natexlab{b}}.
+\newblock URL \url{https://openreview.net/forum?id=r1VGvBcxl}.
+
+\bibitem[Bellemare et~al.(2015)Bellemare, Naddaf, Veness, and Bowling]{ale}
+Marc~G. Bellemare, Yavar Naddaf, Joel Veness, and Michael Bowling.
+\newblock The arcade learning environment: An evaluation platform for general
+  agents (extended abstract).
+\newblock In \emph{Proceedings of the Twenty-Fourth International Joint
+  Conference on Artificial Intelligence, {IJCAI}}, pp.\  4148--4152, 2015.
+
+\bibitem[Bengio et~al.(2015)Bengio, Vinyals, Jaitly, and Shazeer]{BengioVJS15}
+Samy Bengio, Oriol Vinyals, Navdeep Jaitly, and Noam Shazeer.
+\newblock Scheduled sampling for sequence prediction with recurrent neural
+  networks.
+\newblock In \emph{Advances in Neural Information Processing Systems 28: Annual
+  Conference on Neural Information Processing Systems 2015, December 7-12,
+  2015, Montreal, Quebec, Canada}, pp.\  1171--1179, 2015.
+
+\bibitem[Buesing et~al.(2019)Buesing, Weber, Zwols, Heess, Racani{\`{e}}re,
+  Guez, and Lespiau]{woulda_coulda_shoulda}
+Lars Buesing, Theophane Weber, Yori Zwols, Nicolas Heess, S{\'{e}}bastien
+  Racani{\`{e}}re, Arthur Guez, and Jean{-}Baptiste Lespiau.
+\newblock Woulda, coulda, shoulda: Counterfactually-guided policy search.
+\newblock In \emph{7th International Conference on Learning Representations,
+  {ICLR} 2019, New Orleans, LA, USA, May 6-9, 2019}. OpenReview.net, 2019.
+\newblock URL \url{https://openreview.net/forum?id=BJG0voC9YQ}.
+
+\bibitem[Castro et~al.(2018)Castro, Moitra, Gelada, Kumar, and
+  Bellemare]{DBLP:journals/corr/abs-1812-06110}
+Pablo~Samuel Castro, Subhodeep Moitra, Carles Gelada, Saurabh Kumar, and
+  Marc~G. Bellemare.
+\newblock Dopamine: {A} research framework for deep reinforcement learning.
+\newblock \emph{CoRR}, abs/1812.06110, 2018.
+
+\bibitem[Chiappa et~al.(2017)Chiappa, Racani{\`{e}}re, Wierstra, and
+  Mohamed]{recurrent}
+Silvia Chiappa, S{\'{e}}bastien Racani{\`{e}}re, Daan Wierstra, and Shakir
+  Mohamed.
+\newblock Recurrent environment simulators.
+\newblock In \emph{5th International Conference on Learning Representations,
+  {ICLR} 2017, Toulon, France, April 24-26, 2017, Conference Track
+  Proceedings}. OpenReview.net, 2017.
+\newblock URL \url{https://openreview.net/forum?id=B1s6xvqlx}.
+
+\bibitem[Chua et~al.(2018)Chua, Calandra, McAllister, and Levine]{Chua18}
+Kurtland Chua, Roberto Calandra, Rowan McAllister, and Sergey Levine.
+\newblock Deep reinforcement learning in a handful of trials using
+  probabilistic dynamics models.
+\newblock In \emph{Advances in Neural Information Processing Systems}, pp.\
+  4759--4770, 2018.
+
+\bibitem[Deisenroth et~al.(2013)Deisenroth, Neumann, and Peters]{deisenroth}
+Marc~Peter Deisenroth, Gerhard Neumann, and Jan Peters.
+\newblock A survey on policy search for robotics.
+\newblock \emph{Foundations and Trends in Robotics}, 2\penalty0 (1-2), 2013.
+
+\bibitem[Ebert et~al.(2017)Ebert, Finn, Lee, and Levine]{ebert}
+Frederik Ebert, Chelsea Finn, Alex~X. Lee, and Sergey Levine.
+\newblock Self-supervised visual planning with temporal skip connections.
+\newblock In \emph{1st Annual Conference on Robot Learning, CoRL 2017, Mountain
+  View, California, USA, November 13-15, 2017, Proceedings}, volume~78 of
+  \emph{Proceedings of Machine Learning Research}, pp.\  344--356. {PMLR},
+  2017.
+
+\bibitem[Ebert et~al.(2018)Ebert, Finn, Dasari, Xie, Lee, and
+  Levine]{ebert2018visual}
+Frederik Ebert, Chelsea Finn, Sudeep Dasari, Annie Xie, Alex Lee, and Sergey
+  Levine.
+\newblock Visual foresight: Model-based deep reinforcement learning for
+  vision-based robotic control.
+\newblock \emph{arXiv preprint arXiv:1812.00568}, 2018.
+
+\bibitem[Ersen \& Sariel(2014)Ersen and Sariel]{ersen2014learning}
+Mustafa Ersen and Sanem Sariel.
+\newblock Learning behaviors of and interactions among objects through
+  spatio--temporal reasoning.
+\newblock \emph{IEEE Transactions on Computational Intelligence and AI in
+  Games}, 7\penalty0 (1):\penalty0 75--87, 2014.
+
+\bibitem[Espeholt et~al.(2018)Espeholt, Soyer, Munos, Simonyan, Mnih, Ward,
+  Doron, Firoiu, Harley, Dunning, Legg, and Kavukcuoglu]{vtrace}
+Lasse Espeholt, Hubert Soyer, R{\'{e}}mi Munos, Karen Simonyan, Volodymyr Mnih,
+  Tom Ward, Yotam Doron, Vlad Firoiu, Tim Harley, Iain Dunning, Shane Legg, and
+  Koray Kavukcuoglu.
+\newblock {IMPALA:} scalable distributed deep-rl with importance weighted
+  actor-learner architectures.
+\newblock In \emph{Proceedings of the 35th International Conference on Machine
+  Learning, {ICML}}, pp.\  1406--1415, 2018.
+
+\bibitem[Feinberg et~al.(2018)Feinberg, Wan, Stoica, Jordan, Gonzalez, and
+  Levine]{model_based_value_estimation}
+Vladimir Feinberg, Alvin Wan, Ion Stoica, Michael~I. Jordan, Joseph~E.
+  Gonzalez, and Sergey Levine.
+\newblock Model-based value estimation for efficient model-free reinforcement
+  learning.
+\newblock \emph{CoRR}, abs/1803.00101, 2018.
+
+\bibitem[Finn \& Levine(2017)Finn and Levine]{finn2016}
+Chelsea Finn and Sergey Levine.
+\newblock Deep visual foresight for planning robot motion.
+\newblock In \emph{2017 {IEEE} International Conference on Robotics and
+  Automation, {ICRA} 2017, Singapore, Singapore, May 29 - June 3, 2017}, pp.\
+  2786--2793. {IEEE}, 2017.
+\newblock \doi{10.1109/ICRA.2017.7989324}.
+
+\bibitem[Finn et~al.(2016)Finn, Tan, Duan, Darrell, Levine, and
+  Abbeel]{deep_spatial}
+Chelsea Finn, Xin~Yu Tan, Yan Duan, Trevor Darrell, Sergey Levine, and Pieter
+  Abbeel.
+\newblock Deep spatial autoencoders for visuomotor learning.
+\newblock In \emph{{IEEE} International Conference on Robotics and Automation,
+  {ICRA}}, pp.\  512--519, 2016.
+
+\bibitem[Guzdial et~al.(2017)Guzdial, Li, and Riedl]{guzdial2017game}
+Matthew Guzdial, Boyang Li, and Mark~O. Riedl.
+\newblock Game engine learning from video.
+\newblock In \emph{Proceedings of the Twenty-Sixth International Joint
+  Conference on Artificial Intelligence, {IJCAI} 2017, Melbourne, Australia,
+  August 19-25, 2017}, pp.\  3707--3713, 2017.
+\newblock \doi{10.24963/ijcai.2017/518}.
+
+\bibitem[Ha \& Schmidhuber(2018)Ha and Schmidhuber]{world_models}
+David Ha and J{\"{u}}rgen Schmidhuber.
+\newblock Recurrent world models facilitate policy evolution.
+\newblock In Samy Bengio, Hanna~M. Wallach, Hugo Larochelle, Kristen Grauman,
+  Nicol{\`{o}} Cesa{-}Bianchi, and Roman Garnett (eds.), \emph{Advances in
+  Neural Information Processing Systems 31: Annual Conference on Neural
+  Information Processing Systems 2018, NeurIPS 2018, 3-8 December 2018,
+  Montr{\'{e}}al, Canada}, pp.\  2455--2467, 2018.
+
+\bibitem[Hafner et~al.(2019)Hafner, Lillicrap, Fischer, Villegas, Ha, Lee, and
+  Davidson]{hafner}
+Danijar Hafner, Timothy~P. Lillicrap, Ian Fischer, Ruben Villegas, David Ha,
+  Honglak Lee, and James Davidson.
+\newblock Learning latent dynamics for planning from pixels.
+\newblock In Kamalika Chaudhuri and Ruslan Salakhutdinov (eds.),
+  \emph{Proceedings of the 36th International Conference on Machine Learning,
+  {ICML} 2019, 9-15 June 2019, Long Beach, California, {USA}}, volume~97 of
+  \emph{Proceedings of Machine Learning Research}, pp.\  2555--2565. {PMLR},
+  2019.
+
+\bibitem[Heess et~al.(2015)Heess, Wayne, Silver, Lillicrap, Erez, and
+  Tassa]{stochastic_value_gradients}
+Nicolas Heess, Gregory Wayne, David Silver, Timothy~P. Lillicrap, Tom Erez, and
+  Yuval Tassa.
+\newblock Learning continuous control policies by stochastic value gradients.
+\newblock In Corinna Cortes, Neil~D. Lawrence, Daniel~D. Lee, Masashi Sugiyama,
+  and Roman Garnett (eds.), \emph{Advances in Neural Information Processing
+  Systems 28: Annual Conference on Neural Information Processing Systems 2015,
+  December 7-12, 2015, Montreal, Quebec, Canada}, pp.\  2944--2952, 2015.
+
+\bibitem[Hessel et~al.(2018)Hessel, Modayil, van Hasselt, Schaul, Ostrovski,
+  Dabney, Horgan, Piot, Azar, and Silver]{rainbow}
+Matteo Hessel, Joseph Modayil, Hado van Hasselt, Tom Schaul, Georg Ostrovski,
+  Will Dabney, Dan Horgan, Bilal Piot, Mohammad~Gheshlaghi Azar, and David
+  Silver.
+\newblock Rainbow: Combining improvements in deep reinforcement learning.
+\newblock In Sheila~A. McIlraith and Kilian~Q. Weinberger (eds.),
+  \emph{Proceedings of the Thirty-Second {AAAI} Conference on Artificial
+  Intelligence, (AAAI-18), the 30th innovative Applications of Artificial
+  Intelligence (IAAI-18), and the 8th {AAAI} Symposium on Educational Advances
+  in Artificial Intelligence (EAAI-18), New Orleans, Louisiana, USA, February
+  2-7, 2018}, pp.\  3215--3222. {AAAI} Press, 2018.
+
+\bibitem[Hochreiter \& Schmidhuber(1997)Hochreiter and
+  Schmidhuber]{hochreiter1997long}
+Sepp Hochreiter and J{\"u}rgen Schmidhuber.
+\newblock Long short-term memory.
+\newblock \emph{Neural computation}, 9\penalty0 (8):\penalty0 1735--1780, 1997.
+
+\bibitem[Holland et~al.(2018)Holland, Talvitie, and Bowling]{dyna_dqn}
+G.~Zacharias Holland, Erik Talvitie, and Michael Bowling.
+\newblock The effect of planning shape on dyna-style planning in
+  high-dimensional state spaces.
+\newblock \emph{CoRR}, abs/1806.01825, 2018.
+
+\bibitem[Kaiser \& Bengio(2018)Kaiser and Bengio]{auto_discrete}
+Lukasz Kaiser and Samy Bengio.
+\newblock Discrete autoencoders for sequence models.
+\newblock \emph{CoRR}, abs/1801.09797, 2018.
+
+\bibitem[Kalweit \& Boedecker(2017)Kalweit and
+  Boedecker]{uncertainty_driven_imagination}
+Gabriel Kalweit and Joschka Boedecker.
+\newblock Uncertainty-driven imagination for continuous deep reinforcement
+  learning.
+\newblock In Sergey Levine, Vincent Vanhoucke, and Ken Goldberg (eds.),
+  \emph{Proceedings of the 1st Annual Conference on Robot Learning}, volume~78
+  of \emph{Proceedings of Machine Learning Research}, pp.\  195--206. PMLR,
+  13--15 Nov 2017.
+
+\bibitem[Kielak(2020)]{kielak2020do}
+Kacper~Piotr Kielak.
+\newblock Do recent advancements in model-based deep reinforcement learning
+  really improve data efficiency?, 2020.
+\newblock URL \url{https://openreview.net/forum?id=Bke9u1HFwB}.
+
+\bibitem[Kingma \& Welling(2014)Kingma and Welling]{kingma2013auto}
+Diederik~P. Kingma and Max Welling.
+\newblock Auto-encoding variational bayes.
+\newblock In Yoshua Bengio and Yann LeCun (eds.), \emph{2nd International
+  Conference on Learning Representations, {ICLR} 2014, Banff, AB, Canada, April
+  14-16, 2014, Conference Track Proceedings}, 2014.
+
+\bibitem[Kurutach et~al.(2018)Kurutach, Clavera, Duan, Tamar, and
+  Abbeel]{trpo_ensemble}
+Thanard Kurutach, Ignasi Clavera, Yan Duan, Aviv Tamar, and Pieter Abbeel.
+\newblock Model-ensemble trust-region policy optimization.
+\newblock In \emph{6th International Conference on Learning Representations,
+  {ICLR} 2018, Vancouver, BC, Canada, April 30 - May 3, 2018, Conference Track
+  Proceedings}. OpenReview.net, 2018.
+\newblock URL \url{https://openreview.net/forum?id=SJJinbWRZ}.
+
+\bibitem[Leibfried et~al.(2016)Leibfried, Kushman, and
+  Hofmann]{video_reward_prediction}
+Felix Leibfried, Nate Kushman, and Katja Hofmann.
+\newblock A deep learning approach for joint video frame and reward prediction
+  in {A}tari games.
+\newblock \emph{CoRR}, abs/1611.07078, 2016.
+
+\bibitem[Leibfried et~al.(2018)Leibfried, Tutunov, Vrancx, and
+  Bou-Ammar]{leibfried2018model}
+Felix Leibfried, Rasul Tutunov, Peter Vrancx, and Haitham Bou-Ammar.
+\newblock Model-based regularization for deep reinforcement learning with
+  transcoder networks.
+\newblock \emph{arXiv preprint arXiv:1809.01906}, 2018.
+
+\bibitem[Machado et~al.(2018)Machado, Bellemare, Talvitie, Veness, Hausknecht,
+  and Bowling]{ale2}
+Marlos~C. Machado, Marc~G. Bellemare, Erik Talvitie, Joel Veness, Matthew~J.
+  Hausknecht, and Michael Bowling.
+\newblock Revisiting the arcade learning environment: Evaluation protocols and
+  open problems for general agents.
+\newblock \emph{J. Artif. Intell. Res.}, 61:\penalty0 523--562, 2018.
+\newblock \doi{10.1613/jair.5699}.
+
+\bibitem[Mnih et~al.(2013)Mnih, Kavukcuoglu, Silver, Graves, Antonoglou,
+  Wierstra, and Riedmiller]{dqn}
+Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis
+  Antonoglou, Daan Wierstra, and Martin~A. Riedmiller.
+\newblock Playing atari with deep reinforcement learning.
+\newblock \emph{CoRR}, abs/1312.5602, 2013.
+
+\bibitem[Mnih et~al.(2015)Mnih, Kavukcuoglu, Silver, Rusu, Veness, Bellemare,
+  Graves, Riedmiller, Fidjeland, Ostrovski, Petersen, Beattie, Sadik,
+  Antonoglou, King, Kumaran, Wierstra, Legg, and Hassabis]{dqn2}
+Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei~A. Rusu, Joel Veness,
+  Marc~G. Bellemare, Alex Graves, Martin~A. Riedmiller, Andreas Fidjeland,
+  Georg Ostrovski, Stig Petersen, Charles Beattie, Amir Sadik, Ioannis
+  Antonoglou, Helen King, Dharshan Kumaran, Daan Wierstra, Shane Legg, and
+  Demis Hassabis.
+\newblock Human-level control through deep reinforcement learning.
+\newblock \emph{Nature}, 518\penalty0 (7540):\penalty0 529--533, 2015.
+
+\bibitem[Mnih et~al.(2016)Mnih, Badia, Mirza, Graves, Lillicrap, Harley,
+  Silver, and Kavukcuoglu]{a3c}
+Volodymyr Mnih, Adri{\`{a}}~Puigdom{\`{e}}nech Badia, Mehdi Mirza, Alex Graves,
+  Timothy~P. Lillicrap, Tim Harley, David Silver, and Koray Kavukcuoglu.
+\newblock Asynchronous methods for deep reinforcement learning.
+\newblock In \emph{Proceedings of the 33nd International Conference on Machine
+  Learning, {ICML}}, pp.\  1928--1937, 2016.
+
+\bibitem[Oh et~al.(2015)Oh, Guo, Lee, Lewis, and Singh]{video_prediction}
+Junhyuk Oh, Xiaoxiao Guo, Honglak Lee, Richard~L. Lewis, and Satinder~P. Singh.
+\newblock Action-conditional video prediction using deep networks in atari
+  games.
+\newblock In \emph{{NIPS}}, pp.\  2863--2871, 2015.
+
+\bibitem[Oh et~al.(2017)Oh, Singh, and Lee]{vpn}
+Junhyuk Oh, Satinder Singh, and Honglak Lee.
+\newblock Value prediction network.
+\newblock In I.~Guyon, U.~V. Luxburg, S.~Bengio, H.~Wallach, R.~Fergus,
+  S.~Vishwanathan, and R.~Garnett (eds.), \emph{Advances in Neural Information
+  Processing Systems 30}, pp.\  6118--6128. Curran Associates, Inc., 2017.
+
+\bibitem[Paxton et~al.(2019)Paxton, Barnoy, Katyal, Arora, and Hager]{paxton}
+Chris Paxton, Yotam Barnoy, Kapil~D. Katyal, Raman Arora, and Gregory~D. Hager.
+\newblock Visual robot task planning.
+\newblock In \emph{International Conference on Robotics and Automation, {ICRA}
+  2019, Montreal, QC, Canada, May 20-24, 2019}, pp.\  8832--8838. {IEEE}, 2019.
+\newblock \doi{10.1109/ICRA.2019.8793736}.
+
+\bibitem[Piergiovanni et~al.(2018)Piergiovanni, Wu, and Ryoo]{piergiovanni}
+A.~J. Piergiovanni, Alan Wu, and Michael~S. Ryoo.
+\newblock Learning real-world robot policies by dreaming.
+\newblock \emph{CoRR}, abs/1805.07813, 2018.
+
+\bibitem[Pohlen et~al.(2018)Pohlen, Piot, Hester, Azar, Horgan, Budden,
+  Barth{-}Maron, van Hasselt, Quan, Vecer{\'{\i}}k, Hessel, Munos, and
+  Pietquin]{Pohlenetal2018}
+Tobias Pohlen, Bilal Piot, Todd Hester, Mohammad~Gheshlaghi Azar, Dan Horgan,
+  David Budden, Gabriel Barth{-}Maron, Hado van Hasselt, John Quan, Mel
+  Vecer{\'{\i}}k, Matteo Hessel, R{\'{e}}mi Munos, and Olivier Pietquin.
+\newblock Observe and look further: Achieving consistent performance on atari.
+\newblock \emph{CoRR}, abs/1805.11593, 2018.
+
+\bibitem[Rybkin et~al.(2018)Rybkin, Pertsch, Jaegle, Derpanis, and
+  Daniilidis]{rybkin-pertsch}
+Oleh Rybkin, Karl Pertsch, Andrew Jaegle, Konstantinos~G. Derpanis, and Kostas
+  Daniilidis.
+\newblock Unsupervised learning of sensorimotor affordances by stochastic
+  future prediction.
+\newblock \emph{CoRR}, abs/1806.09655, 2018.
+
+\bibitem[Schmidhuber(2010)]{schmidhuber_formal_theory}
+J{\"{u}}rgen Schmidhuber.
+\newblock Formal theory of creativity, fun, and intrinsic motivation
+  {(1990-2010)}.
+\newblock \emph{{IEEE} Trans. Autonomous Mental Development}, 2\penalty0
+  (3):\penalty0 230--247, 2010.
+
+\bibitem[Schulman et~al.(2017)Schulman, Wolski, Dhariwal, Radford, and
+  Klimov]{ppo}
+John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+\newblock Proximal policy optimization algorithms.
+\newblock \emph{CoRR}, abs/1707.06347, 2017.
+
+\bibitem[Sodhani et~al.(2019)Sodhani, Goyal, Deleu, Bengio, Levine, and
+  Tang]{sodhani2019learning}
+Shagun Sodhani, Anirudh Goyal, Tristan Deleu, Yoshua Bengio, Sergey Levine, and
+  Jian Tang.
+\newblock Learning powerful policies by using consistent dynamics model.
+\newblock \emph{arXiv preprint arXiv:1906.04355}, 2019.
+
+\bibitem[Srivastava et~al.(2014)Srivastava, Hinton, Krizhevsky, Sutskever, and
+  Salakhutdinov]{srivastava2014dropout}
+Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan
+  Salakhutdinov.
+\newblock Dropout: a simple way to prevent neural networks from overfitting.
+\newblock \emph{The Journal of Machine Learning Research}, 15\penalty0
+  (1):\penalty0 1929--1958, 2014.
+
+\bibitem[Sutton(1991)]{dyna}
+Richard~S. Sutton.
+\newblock Dyna, an integrated architecture for learning, planning, and
+  reacting.
+\newblock \emph{SIGART Bull.}, 2\penalty0 (4):\penalty0 160--163, July 1991.
+
+\bibitem[Sutton \& Barto(2017)Sutton and Barto]{sutton_barto_2017}
+Richard~S. Sutton and Andrew~G. Barto.
+\newblock \emph{Reinforcement learning - an introduction, 2nd edition (work in
+  progress)}.
+\newblock Adaptive computation and machine learning. {MIT} Press, 2017.
+
+\bibitem[Tsividis et~al.(2017)Tsividis, Pouncy, Xu, Tenenbaum, and
+  Gershman]{human_atari_minutes}
+Pedro Tsividis, Thomas Pouncy, Jaqueline~L. Xu, Joshua~B. Tenenbaum, and
+  Samuel~J. Gershman.
+\newblock Human learning in atari.
+\newblock In \emph{2017 {AAAI} Spring Symposia, Stanford University, Palo Alto,
+  California, USA, March 27-29, 2017}, 2017.
+
+\bibitem[van~den Oord et~al.(2017)van~den Oord, Vinyals, and
+  Kavukcuoglu]{neural_discrete}
+A{\"{a}}ron van~den Oord, Oriol Vinyals, and Koray Kavukcuoglu.
+\newblock Neural discrete representation learning.
+\newblock In Isabelle Guyon, Ulrike von Luxburg, Samy Bengio, Hanna~M. Wallach,
+  Rob Fergus, S.~V.~N. Vishwanathan, and Roman Garnett (eds.), \emph{Advances
+  in Neural Information Processing Systems 30: Annual Conference on Neural
+  Information Processing Systems 2017, 4-9 December 2017, Long Beach, CA,
+  {USA}}, pp.\  6306--6315, 2017.
+
+\bibitem[van Hasselt et~al.(2019)van Hasselt, Hessel, and
+  Aslanides]{nips/HasseltHA19}
+Hado van Hasselt, Matteo Hessel, and John Aslanides.
+\newblock When to use parametric models in reinforcement learning?
+\newblock In Hanna~M. Wallach, Hugo Larochelle, Alina Beygelzimer, Florence
+  d'Alch{\'{e}}{-}Buc, Emily~B. Fox, and Roman Garnett (eds.), \emph{Advances
+  in Neural Information Processing Systems 32: Annual Conference on Neural
+  Information Processing Systems 2019, NeurIPS 2019, 8-14 December 2019,
+  Vancouver, BC, Canada}, pp.\  14322--14333, 2019.
+
+\bibitem[Venkatraman et~al.(2016)Venkatraman, Capobianco, Pinto, Hebert, Nardi,
+  and Bagnell]{venkatraman}
+Arun Venkatraman, Roberto Capobianco, Lerrel Pinto, Martial Hebert, Daniele
+  Nardi, and J.~Andrew Bagnell.
+\newblock Improved learning of dynamics models for control.
+\newblock In \emph{International Symposium on Experimental Robotics, {ISER}
+  2016, Tokyo, Japan, October 3-6, 2016.}, pp.\  703--713, 2016.
+
+\bibitem[Wang et~al.(2019)Wang, Bao, Clavera, Hoang, Wen, Langlois, Zhang,
+  Zhang, Abbeel, and Ba]{benchmarkingmbrl}
+Tingwu Wang, Xuchan Bao, Ignasi Clavera, Jerrick Hoang, Yeming Wen, Eric
+  Langlois, Shunshi Zhang, Guodong Zhang, Pieter Abbeel, and Jimmy Ba.
+\newblock Benchmarking model-based reinforcement learning.
+\newblock \emph{CoRR}, abs/1907.02057, 2019.
+
+\bibitem[Watter et~al.(2015)Watter, Springenberg, Boedecker, and
+  Riedmiller]{embed_to_control}
+Manuel Watter, Jost~Tobias Springenberg, Joschka Boedecker, and Martin~A.
+  Riedmiller.
+\newblock Embed to control: {A} locally linear latent dynamics model for
+  control from raw images.
+\newblock In \emph{Advances in Neural Information Processing Systems}, pp.\
+  2746--2754, 2015.
+
+\bibitem[Wu et~al.(2017)Wu, Mansimov, Grosse, Liao, and Ba]{acktr}
+Yuhuai Wu, Elman Mansimov, Roger~B. Grosse, Shun Liao, and Jimmy Ba.
+\newblock Scalable trust-region method for deep reinforcement learning using
+  kronecker-factored approximation.
+\newblock In Isabelle Guyon, Ulrike von Luxburg, Samy Bengio, Hanna~M. Wallach,
+  Rob Fergus, S.~V.~N. Vishwanathan, and Roman Garnett (eds.), \emph{Advances
+  in Neural Information Processing Systems 30: Annual Conference on Neural
+  Information Processing Systems 2017, 4-9 December 2017, Long Beach, CA,
+  {USA}}, pp.\  5279--5288, 2017.
+
+\end{thebibliography}

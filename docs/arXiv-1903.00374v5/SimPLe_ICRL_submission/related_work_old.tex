@@ -1,0 +1,70 @@
+\section{Related work}
+\label{sec:related_work}
+
+% \paragraph{Model-free algorithms and Atari games.} 
+In \cite{dqn} the authors presented the DQN algorithm which learns to play a large number of Atari games. The algorithm was extended in \cite{ppo,acktr,dqn2,rainbow,a3c} towards higher performance and better parallelization. % and in \cite{acktr} towards sample efficiency. % \todo[inline]{Add more "sample efficient" methods?} % emphasizes sample efficiency and in a number of games achieves the state-of-the-art performance utilizing only 2 million frames. Other above mentioned algorithms tend to utilize at least an order of magnitude more frames to achieve the top performance. 
+%%SL.12.27:  Maybe it would be good to put this paragraph first in this section, as a way to motivate and set up the problem? That would then flow nicely into model-based RL, where the end of this paragraph can state clearly the model-free RL challenges.
+In this work we are addressing a question what kind of performance in Atari games can be achieved within the budget of 100K frames. None of the above methods was tested against such a strict sample efficiency requirement, hence in this work we include a thorough evaluation of the PPO \cite{ppo} and Rainbow \cite{rainbow} algorithms optimized for performance on 100K and 1M frames, see Table \ref{table:rainbow}.
+
+% \paragraph{Model-based methods.}  
+% The budget of 100K frames is spent on learning of the model of environment.  
+In \cite{recurrent,video_prediction} it is shown that learning of Atari 2600 environments is possible using appropriately chosen deep learning architectures. Impressively, in some cases the predictions maintain high $L_2$ accuracy over timespans of hundreds steps. % Learning of rewards is not reported.
+%%SL.12.27: I understand why that last sentence is important, but it feels somehow passive aggressive. Maybe we can just remove it and make everyone happier?
+%%CF.12.27: What we could do is later phrase that, unlike prior work, we focus on using video prediction in the context of learning the play the game well.
+As learned simulators of Atari environments are core ingredients of our approach, in many aspects our work is motivated by \cite{recurrent,video_prediction}, however we focus on using video prediction in the context of learning how to play the game well and positively verify that learned simulators can be used to train a policy useful in original environments. In other terms we are making a step from a pure video-prediction task in \cite{recurrent,video_prediction} to a model-based learning for Atari games. 
+Perhaps surprisingly, there is virtually no work on model-based learning in video games. A notable exception is 
+%an interesting new work 
+\cite{world_models}. The authors compose variational autoencoders with recurrent neural networks into an architecture being able to model evolution of non-deterministic games. This architecture is successfully evaluated in the VizDoom environment on a task which requires avoiding random fireballs. They propose a training procedure, which is essentially the same as Algorithm \ref{alg:basic_loop}. In the VizDoom experiment they need only one loop as the environment has rather dense rewards and is simple enough to be discovered by random exploration. % Interestingly, they increase the randomness of the simulator to prevent training from exploiting loopholes of the neural network model.
+
+For a survey of model-based methods for robotics see \cite[Chapter 3]{deisenroth}. In this domain recent works  \cite{finn2016, ebert, hafner, piergiovanni, paxton, rybkin-pertsch}  are focused on learning models from raw pixels and our approach to learning of models in Atari games is closely motivated by this line of research, see Section \ref{sec:architectures} for detailed description of our models used for video and reward predictions.  Another source of motivation is a stochastic video prediction model \cite{sv2p} and discrete autoencoders described in \cite{neural_discrete, auto_discrete}.   % In \cite{trpo_ensemble} the model-based approach is applied in the context of the MuJoCo physics simulator \cite{mujoco}. 
+
+In a recent work \cite{trpo_ensemble} a training loop similar to one described in  Algorithm \ref{basic_loop} along with a policy gradient algorithm \cite{trpo} was applied to a number of robotic tasks in the MuJoCo physics simulator \cite{mujoco}. Learning in  \cite{trpo_ensemble} is based on the state of the robot and does not involve visual inputs. 
+
+% \paragraph{Augmenting model-free reinforcement learning using a model.} In \cite{imagination_metacontrol,imagination_model_based_planning} a model of the environment called {\em imagination} is used to augment performance of a model-free reinforcement learning algorithm. This proved to be particularly useful in games like Sokoban, where certain moves are irreversible. 
+% HM.1.9:  removing imagination to save space, also it does not involve Atari
+
+%There are number of differences though. We argue that the $L_2$ accuracy is not necessarily a good proxy measure for assessing applicability in reinforcement learning. Instead we argue for using \textit{correct rewards per sequence} metric (see Section \ref{sec:architectures}). In fact we found that training models with poor $L_2$ accuracy might be beneficial for \textit{correct rewards per sequence} metric as explained in Section \ref{sec:architectures}.
+%%SL.12.27: I think this statement perhaps places somewhat undue emphasis on the metric. I can see the importance, but coming this early in the paper, readers might misunderstand it as suggesting that this is the key component that makes the method work at all...
+% Finally, we positively verify that our simulations can be used to train a policy useful in original environments. 
+% \paragraph{Learning models from pixels.} In \cite{pixel1, pixel2, pixel3, raw_visual}
+%%SL.12.27: the first two are not concerned with robotics, the third one is robotics but doesn't learn models on pixels, and the fourth one is on pixels but doesn't learn models :) Chelsea can probably suggest the right related work to put here, but maybe what I might suggest is to first have a block of citations about model-based RL in general (whether from pixels or not), and cite the Deisenroth survey paper there, and then have a block of citations on learning models from pixels and cite papers that do that all together (Chelsea can probably provide this list)
+%%CF.12.27: The relevant citations for model-based RL with raw pixel input is:
+% -- Learn autoencoder on pixels and learn model in latent space: embed to control (Watter et al), deep spatial autoencoders (Finn et al), Danijar Hafner's latest paper (https://arxiv.org/abs/1811.04551)
+% -- Learn model in pixel space and use it for planning and control: deep visual foresight (Finn et al.), self-supervised visual planning (Ebert et al), 
+% -- this paper: https://arxiv.org/abs/1806.09655
+% -- this paper: https://arxiv.org/abs/1805.07813
+% -- this paper: https://arxiv.org/abs/1804.00062 (trains video predictor on demonstrations, not on autonomously collected data, so not really doing model-based RL, but still using video prediction)
+% the model-based approach is applied to robotics. Models are taking images as inputs and  policies are trained to perform tasks such as moving a robotic arm or grasping of an object. In this work we focus on Atari games. This  standard reinforcement learning benchmark allows for an easy comparison of obtained results with the state-of-the-art achieved by model-free reinforcement learning algorithms.
+
+% \paragraph{Learning of models in other games.} 
+%%SL.12.27: I feel like we are better off having a more general discussion of related work on model-based reinforcement learning from pixels and adding this paper as one of the citations -- there are plenty of papers that do essentially the same thing, so it feels weird to single it out for an entire paragraph just because it's from Google (or for any other reason). For example, the e2c paper also uses VAEs.
+%%CF.12.27: I agree that it doesn't make sense to separate this from the papers above. It belongs in the same category as embed-to-control/E2C, which I mentioned above.
+%%HM.6.01: I agree with the criticism to some extend and will attempt to re-write it, but the main reason why it occupies so much space is that we are doing video games and the cited paper is the only one which also does video games. Besides, when we have started to talk with LK about the current project in Nov 2017, LK was aware of progress and of limitations of David's project and our work was intended to address some of these limitations. 
+
+% \paragraph{Learning models from the state of a physics simulator.} In \cite{trpo_ensemble, mpc_model_based} the model-based approach is applied in the context of the MuJoCo physics simulator \cite{mujoco}. The simulator exposes the state of the environment which is in practice a vector of floats of length up to $50$. Authors of \cite{trpo_ensemble, mpc_model_based} use a data collection method similar to the one described in Algorithm \ref{basic_loop}.
+%%SL.12.27: there are something like three decades of research on model-based RL algorithms... maybe a better scoping for related work would be to just cite the deisenroth survey and a couple recent papers (first) and then mostly focus on the pixel-based methods?
+
+%(the latter has a good bibliography review for robotics)
+%Missing bibliography \todo[inline]{Include the work on MuJoCo into the bibliography - they are in a separated model-based doc https://docs.google.com/document/d/1rjLmIoAGINii97cUCkSPcse61veQqd27wzEoOmL-Etc/edit?usp=sharing }
+%%HM 6.01 trpo_ensemble has a unique (?) feature that iterated TRPO is used to learn policy. I consider this as an approval/precedence which justifies usage of PPO in our loop.   
+
+% \paragraph{Augmenting model-free reinforcement learning using a model.} In \cite{imagination_metacontrol,imagination_model_based_planning} a model of the environment called {\em imagination} is used to augment performance of a model-free reinforcement learning algorithm. This proved to be particularly useful in games like Sokoban, where certain moves are irreversible. 
+%%SL.12.27: For this kind of thing, it would be a good idea at the end of each section to discuss how this work relates to the current one. But also this paragraph can probably be cut (you'll be out of space)
+%%HM 6.01 The reason these paper are cited here is that they are about video games and at the same time they use some ideas from model-based RL.
+
+% \paragraph{Neural architectures suitable for modeling of video games. } In this work we apply two advanced recurrent models: the Stochastic Variational Video Prediction (SV2P, \cite{sv2p}) and a video discrete autoencoder inspired by \cite{neural_discrete, auto_discrete}. 
+% PM.01.08 possibly add  \cite{Buesingatal2018}
+
+
+%\paragraph{Use of autoencoders.} We want a nice compact representation and run our reinforcement learning algorithm on the representation. \todo[inline]{This appears in quite a few places including \cite{raw_visual,world_models,deep_spatial,embed_to_control} but also some of pixel series \cite{pixel1,pixel2,pixel3}}
+
+%\paragraph{Encouraging exploration.} Certainly this idea appers in \cite{video_prediction}. See also \href{http://rll.berkeley.edu/deeprlcourse/f17docs/advanced_model_learning.pdf#29}{Notes from the Berkeley course, page 29.}
+
+
+
+
+% \todo[inline]{Include discussion of 3 papers mentioned in notes.}
+
+%\todo[inline]{It would be good to find a source which really measures sample efficiency.}
+
+%\paragraph{Worth of including here.} Schmidhuber-Huber \cite{huber} Bellemare, PhD thesis \cite{marc_skip,marc_bayesian_learning}; these all appears in related work in \cite{video_prediction}.

@@ -1,0 +1,38 @@
+\section{Related work}
+\label{sec:related_work}
+
+% HM.1.9. a version of old related work section is in the file related_work_old.tex.
+% It includes all comments, but sadly I have mingled/misplaced them in the process of re-writing.
+% I am maintaining the distinction "video games vs robotics", but if necessary I am ready to drop it
+
+%%SL.1.15: Here is a rephrasing that maintains the spirit of the original but somewhat emphasizes the distinction: Atari games gained prominence as a popular benchmark for reinforcement learning algorithms with the introduction of the Arcade Learning Environment (ALE)~\cite{}. The combination of reinforcement learning and deep models then enabled RL algorithms to learn to play Atari games directly from images of the game screen, using the DQN algorithm~\cite{dqn}, policy gradients~\cite{}, and actor-critic algorithms~\cite{}. The most successful methods in this domain remain model-free algorithms~\cite{rainbow?}. However, although the sample complexity of these methods has improved substantially over the last few years, it remains far higher than the amount of experience required for human players to learn each game~\cite{}. In this work, we aim to learn Atari games with a budget of just 100K frames, corresponding to one hour of play time. Prior methods are generally not evaluated in this regime, and we therefore reoptimized two prior methods: PPO~\cite{ppo} and Rainbow~\cite{rainbow} for optimal performance on 100K and 1M frames for comparison.
+In a number of Atari games, impressive results have been achieved by the DQN algorithm \cite{dqn}. The algorithm was extended in \cite{ppo,acktr,dqn2,rainbow,a3c} towards higher performance and better parallelization.
+In this work we are addressing a question what kind of performance in Atari games can be achieved within the budget of 100K frames. None of the above methods was tested against such a strict sample efficiency requirement, hence in this work we include a thorough evaluation of the PPO \cite{ppo} and Rainbow \cite{rainbow} algorithms optimized for performance on 100K and 1M frames, see Table \ref{table:rainbow}.\todo[inline]{HM @ Blazej: let us not forget about the table}
+
+%%SL.1.15: Maybe we transition by saying: While to our knowledge no prior work has successfully learned to play a variety of Atari games with model-based reinforcement learning methods directly, multiple prior works have studied the problem of modeling Atari games, both as static videos and with action-conditioned models...
+In \cite{video_prediction, recurrent} it is shown that learning of Atari 2600 environments is possible using appropriately chosen deep learning architectures. Impressively, in some cases the predictions maintain high $L_2$ accuracy over timespans of hundreds of steps. 
+As learned simulators of Atari environments are core ingredients of our approach, in many aspects our work is motivated by \cite{video_prediction, recurrent}, however we focus on using video prediction in the context of learning how to play the game well and positively verify that learned simulators can be used to train a policy useful in original environments. In other terms we are making a step from a pure video-prediction task in \cite{video_prediction, recurrent} to model-based learning for Atari games.
+%%SL.1.15: can probably cut this last sentence
+An important step in this direction was made in \cite{video_reward_prediction}, which extends \cite{video_prediction} by including reward prediction, but does not use the model to learn policies that play the games.
+Perhaps surprisingly, there is virtually no work on model-based RL in video games.
+%%SL.1.15: should we say "from images"?
+A notable exceptions are 
+\cite{vpn,world_models}. In \cite{vpn} a model of rewards is used to augment model-free learning with good results on a number of Atari games, but the RL algorithm is not intended to be sample efficient.
+%%SL.1.15: maybe instead of "but the ..." say "However, this method does not actually aim to model or predict future frames, and achieves clear but relatively modest gains in efficiency."
+In \cite{world_models} a variational autoencoder is composed with a recurrent neural network into an architecture  
+which is successfully evaluated in the VizDoom environment and on a 2D racing game. 
+The training procedure is similar to  Algorithm \ref{alg:basic_loop}, but only one step of the loop is needed as the environments are simple enough to be fully explored with random exploration.
+%%SL.1.15: I don't suppose there is anything we can include in our experiments that we can honestly say is a *comparison* to this method?
+
+%%SL.1.15: Maybe a transition could go like this: Outside of games, model-based reinforcement learning has been explored at length for applications such as robotics~\cite{}. Though most such prior methods did not employ image observations, several recent works have sought to incorporate images into simulated~\cite{} and real-world~\cite{} robotic control.
+For a survey of model-based methods for robotics see Chapter 3 in \cite{deisenroth}.
+Our models of Atari environments described in Section \ref{sec:architectures} are motivated by video models developed for robotics applications in \cite{embed_to_control, deep_spatial, finn2016, sv2p, ebert, hafner, piergiovanni, paxton, rybkin-pertsch}.  Another source of an inspiration are discrete autoencoders proposed in \cite{neural_discrete, auto_discrete}.
+%%SL.1.15: For this last sentence, I feel like we should instead have a separate place where we discuss related work on modeling (i.e., related prediction models)
+
+%%SL.1.15: I think this paragraph can be merged into the discussion of model-based RL in robotics in the paragraph above. But if we want a paragraph on model-based RL methods that combine model-free optimizers and models, we can say something like this: The structure of the model-based RL algorithm that we employ consists of alternating between learning a model, and then using this model to optimize a policy by using model-free reinforcement learning within the model. Variants of this basic structure has been proposed in a number of prior works, ranging from Dyna~\cite{sutton_dyna_paper} to more recent methods that incorporate deep networks for models and policies... [and can cite/discuss here the ensemble paper (i.e., the discussion below), as well as stochastic value gradients, model-based value expansion, and this paper: Kalweit, Gabriel and Boedecker, Joschka. Uncertainty driven imagination for continuous deep reinforcement learning]
+In a recent work \cite{trpo_ensemble} a training loop similar to one described in  Algorithm \ref{basic_loop} along with a policy gradient algorithm \cite{trpo} were applied to a number of robotic tasks in the MuJoCo physics simulator \cite{mujoco}.  This successful application of a learned model and a policy gradient algorithm motivated our choice of PPO \cite{ppo} as the algorithm which improves policy in the learned environment, see also discussion in Section 3.3.2.1 of \cite{deisenroth}. % "To the best our knowledge  knowledge, there are currently not many approaches for model-based policy  search  based  on  sampling-based  gradients  using  the  methods from Section 2."
+
+% Two student papers on MBRL for Atari (Pong, specifically)
+% http://cs231n.stanford.edu/reports/2016/pdfs/116_Report.pdf
+% https://dspace.fandm.edu/bitstream/handle/11016/24289/Foley_Thesis.pdf?sequence=1&isAllowed=y
+%%CF: I don't think we need to worry about citing these.

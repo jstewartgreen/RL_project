@@ -1,0 +1,81 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{iclr2019_conference,times}
+
+% Optional math commands from https://github.com/goodfeli/dlbook_notation.
+\input{math_commands.tex}
+
+%\usepackage{hyperref}
+\usepackage{url}
+
+\input{macros}
+\usepackage{comment}
+\title{Model-Based Reinforcement Learning for Atari}
+%%SL.12.27: Some ideas for the title:
+% Playing by Prediction: Model-Based Control in Atari from Pixels
+% Predict and Play: Fast Model-Based Control in Atari
+% Learning Atari Games with Model-Based RL in an Hour (is it an hour? that is, equivalent experience time, though the ambiguity here might make this title undesirable)
+
+\author{
+ \L{}ukasz Kaiser* \And Błażej Osiński* \And Mohammad Babaeizadeh* \And Piotr Mi\l{}os* \And
+ Dumitru Erhan \And Ryan Sepassi \And Chelsea Finn \And Sergey Levine \And  George Tucker \And
+ Piotr Kozakowski \And Konrad Czechowski \And Henryk Michalewski
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Data efficiency is one of the main problems of deep reinforcement learning:
+usually millions of interactions with the environment are necessary to learn
+good policies. Model-based reinforcement learning has been proposed as a way to
+address this issue, but the model-free approach is still dominant,
+especially for pixel-based tasks.
+%%SL.12.27: This is a reasonable way to motivate the paper, but I feel like a more ambitious and inspiring motivation could work better in the abstract. Here is a suggestion: Model-free reinforcement learning can be used to learn effective policies for complex tasks, such as Atari games, even from image observations. However, this typically requires very large amounts of interaction -- substantially more, in fact, than a person would need to learn the same games. How can people learn so quickly? Perhaps part of the answer is that people can learn how the game works, and predict which actions will lead to desirable outcomes. In this paper, we explore how deep predictive models can similarly enable autonomous agents to solve Atari games with orders of magnitude fewer interactions as compared to model-free methods.
+We show how Atari games can be solved using purely model-based reinforcement learning.
+In our system, the reinforcement learning part happens without interaction with the true environment:
+we use a neural network model instead.
+We train our models on a suite of $41$ Atari games using only
+$100$K frames from the environment (about 1 hour of game-play).
+Our method matches or exceeds the performance of model-free methods (both PPO and DQN)
+%%SL.12.27: I think some people will have a knee-jerk reaction to the "DQN" comment -- I think what we actually compare to is the fanciest variant of DQN in Dopamine, which is probably not "vanilla" DQN. I have no idea what it's called because DeepMind has a weird habit of completely renaming their algorithm with every paper, but maybe we just don't call it anything for now and describe the nuances more in the experiments section?
+allowed to use 10 times more frames (1M) and on a subset of games matches the maximum
+performance of model-free methods (that use 100M frames).
+To achieve these results, we introduce both a new architecture for next-frame prediction
+models with a discrete autoencoder and a number of modifications to RL training to
+improve performance in the model-based setting.
+%%SL.12.27: We should be careful with which technical contribution we mention in the abstract, because readers (esp. reviewers) are likely to conclude that anything *not* mentioned here is not a technical contribution. Maybe a more complete phrasing could be something like: We describe a complete model-based deep RL algorithm based on stochastic deep predictive models, present and compare several model architectures, including a novel discrete-state autoencoder model, and [whatever other new things are in the paper]
+Together, this gives the first method to successfully do purely model-based reinforcement
+learning for Atari games and the first time a deep learning technique manages to learn
+an Atari game with so little interaction with the environment.
+\end{abstract}
+
+\todo[inline]{(Henryk) Please, add your remarks using the todo package. }
+
+
+%\input{introduction}
+
+\input{pm_introduction}
+
+\input{related_work}
+
+\input{architectures}
+
+\input{policies}
+
+% \input{rl_algorithm}
+
+\input{experiments}
+
+\input{analysis}
+
+\input{conclusion}
+
+% \input{pm_notes}
+
+\bibliographystyle{alpha}
+\bibliography{model_based}
+
+\input{appendix_experiments}
+
+\end{document}

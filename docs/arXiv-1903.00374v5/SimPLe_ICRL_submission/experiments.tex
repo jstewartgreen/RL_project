@@ -1,0 +1,23 @@
+\section{Experiments}
+\label{sec:experiments}
+
+We evaluate SimPLe on a suite of Atari games from Atari Learning Environment (ALE) benchmark.
+In our experiments, the training loop is repeated for 15 iterations, with $6400$ interactions with the environment collected in each iteration.
+We apply a standard pre-processing for Atari games: a frame skip equal to 4, that is every action
+is repeated 4 times and frames are down-scaled by a factor of 2.
+
+Because some data is collected before the first iteration of the loop,
+altogether $6400 \cdot 16 = 102,400$ interactions with the Atari environment are used during training.
+This is equivalent to $409,600$ frames from the Atari game (114 minutes in NTCS, 60 FPS).
+All our code is available. \textbf{TODO: more?}
+% as part of the Tensor2Tensor library with instructions on how to run our experiments.\footnote{\url{https://github.com/tensorflow/tensor2tensor/tree/master/tensor2tensor/rl}} 
+
+At every iteration, the latest policy trained under the learned model is used to collect data in the real environment $\env$.
+Due to vast difference between number of training data from simulated environment and real environment (15M vs 100K) the impact of real data on policy is negligible.
+
+ We evaluate our method on $26$ games selected on the basis of being solvable with existing state-of-the-art model-free deep RL algorithms\footnote{Specifically, for the final evaluation we selected games which achieved non-random results using our method or the Rainbow algorithm using $100$K interactions.}, which in our comparisons are Rainbow~\citep{rainbow} and PPO~\citep{ppo}.
+ For Rainbow, we used the implementation from the Dopamine package and spent considerable time tuning it for sample efficiency.
+
+For visualization of all experiments see \url{https://goo.gl/itykP8}
+and for a summary see Figures \ref{fig:compare_dopamine} and  \ref{fig:compare_ppo}.
+It can be seen that our method is more sample-efficient than a highly tuned Rainbow baseline on almost all games, requires less than half of the samples on more than half of the games and, on \freeway\, is more than 10x more sample-efficient. Our method outperforms PPO by an even larger margin.

@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 2
+\BOOKMARK [1][-]{section.3}{Simulated Policy Learning \(SimPLe\)}{}% 3
+\BOOKMARK [1][-]{section.4}{World Models}{}% 4
+\BOOKMARK [1][-]{section.5}{Policy Training}{}% 5
+\BOOKMARK [1][-]{section.6}{Experiments}{}% 6
+\BOOKMARK [2][-]{subsection.6.1}{Sample Efficiency}{section.6}% 7
+\BOOKMARK [2][-]{subsection.6.2}{Number of frames}{section.6}% 8
+\BOOKMARK [2][-]{subsection.6.3}{Environment stochasticity}{section.6}% 9
+\BOOKMARK [2][-]{subsection.6.4}{Ablations}{section.6}% 10
+\BOOKMARK [1][-]{section.7}{Conclusions and Future Work}{}% 11
+\BOOKMARK [1][-]{appendix.A}{Ablations}{}% 12
+\BOOKMARK [1][-]{appendix.B}{Qualitative Analysis}{}% 13
+\BOOKMARK [1][-]{appendix.C}{Architecture details}{}% 14
+\BOOKMARK [1][-]{appendix.D}{Numerical results}{}% 15
+\BOOKMARK [1][-]{appendix.E}{Baselines optimization}{}% 16
+\BOOKMARK [1][-]{appendix.F}{Results at different numbers of interactions}{}% 17

@@ -1,0 +1,86 @@
+\documentclass{article} % For LaTeX2e
+
+% Recommended, but optional, packages for figures and better typesetting:
+% \usepackage{microtype}
+% \usepackage{graphicx}
+% \usepackage{subfigure}
+% \usepackage{booktabs} % for professional tables
+
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2019} with \usepackage[nohyperref]{icml2019} above.
+%\usepackage{hyperref}
+
+% Attempt to make hyperref and algorithmic work together better:
+% \newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Use the following line for the initial blind version submitted for review:
+\usepackage{icml2019}
+
+\usepackage{times}
+
+% If accepted, instead use the following line for the camera-ready submission:
+%\usepackage[accepted]{icml2019}
+
+% The \icmltitle you define below is probably too long as a header.
+% Therefore, a short form for the running title is supplied here:
+\icmltitlerunning{Model-Based RL for Atari}
+
+%\usepackage{times}
+
+% Optional math commands from https://github.com/goodfeli/dlbook_notation.
+\input{math_commands.tex}
+
+%\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+
+\begin{document}
+
+
+\begin{tabular}{lrrrrrrrr}\label{tab:all_results}
+
+experiment\_name &  determ &  determ\_rec &  sd &  sd\_g90 &  sd\_g95 &  sd\_s100 &  sd\_s25 &  sv2p \\
+game            &            &                 &          &              &              &               &              &            \\
+\midrule
+alien           &      516.6 &           381.1 &    586.9 &        530.5 &        682.7 &         522.3 &        792.8 &      355.6 \\
+amidar          &       84.8 &           118.4 &    114.0 &         58.9 &        101.4 &          47.5 &        137.7 &       16.8 \\
+assault         &      560.1 &           627.2 &    527.9 &        614.4 &        722.5 &         391.1 &       1060.3 &      295.3 \\
+asterix         &      739.8 &          2157.0 &    763.3 &        842.2 &        794.5 &         498.4 &        596.9 &      650.0 \\
+asteroids       &      854.7 &           919.8 &    962.0 &        909.1 &        949.5 &         962.2 &        752.7 &      649.8 \\
+atlantis        &    16545.3 &         17778.1 &  18396.9 &      23046.9 &      23579.7 &       16790.6 &      15728.1 &    19085.9 \\
+bank\_heist      &       14.4 &            18.8 &     13.9 &         14.5 &         13.1 &          17.2 &         17.0 &       14.7 \\
+battle\_zone     &     4140.6 &          4546.9 &   5656.2 &       3343.8 &       4703.1 &        8906.2 &       5734.4 &     3828.1 \\
+beam\_rider      &      515.5 &           470.2 &    512.6 &        682.8 &        519.2 &         544.6 &        741.9 &      464.4 \\
+bowling         &       36.2 &            43.7 &     55.0 &         34.9 &         28.6 &          39.9 &         54.7 &       30.0 \\
+boxing          &        1.9 &             3.2 &      2.7 &          2.5 &          6.5 &          -1.2 &          8.2 &        0.3 \\
+breakout        &        9.8 &             NaN &     19.5 &         10.4 &         14.1 &          16.7 &         13.0 &        NaN \\
+chopper\_command &     1125.0 &          1270.3 &    875.0 &        973.4 &       1323.4 &         914.1 &       1404.7 &      793.8 \\
+crazy\_climber   &    23831.2 &         51559.4 &  67250.0 &      58979.7 &      84070.3 &       64196.9 &      43179.7 &     3396.9 \\
+demon\_attack    &      263.0 &           148.4 &    223.9 &        293.8 &        312.8 &         222.6 &        424.8 &      113.8 \\
+fishing\_derby   &      -90.2 &           -94.2 &    -88.6 &        -85.7 &        -88.8 &         -85.4 &        -90.7 &      -90.5 \\
+freeway         &       29.3 &            32.2 &     34.0 &         32.0 &         33.8 &          32.3 &         33.5 &       21.3 \\
+frostbite       &      203.9 &           256.2 &    262.8 &        261.7 &        255.9 &         247.7 &        337.5 &      159.8 \\
+gopher          &      740.6 &           320.9 &    934.4 &       1167.2 &       1001.6 &         891.6 &        845.0 &      238.8 \\
+gravitar        &      310.2 &           300.0 &    252.3 &        225.8 &        243.8 &         218.0 &        240.6 &      287.5 \\
+hero            &     2913.0 &          2601.5 &   3133.8 &       3147.5 &       5092.0 &        3256.9 &       2964.8 &     1872.8 \\
+ice\_hockey      &       -9.9 &           -11.8 &     -7.7 &         -8.5 &        -10.7 &         -10.0 &        -11.0 &       -1.7 \\
+jamesbond       &      128.9 &           219.5 &    323.4 &         46.9 &         69.5 &         139.1 &        261.7 &      118.8 \\
+kangaroo        &      828.1 &           728.1 &    909.4 &        334.4 &         50.0 &        1362.5 &       1128.1 &       68.8 \\
+krull           &     1014.3 &          2943.6 &   7163.2 &       3554.5 &       3827.1 &        6315.2 &       6833.4 &      953.4 \\
+kung\_fu\_master  &    20450.0 &          8065.6 &  21943.8 &      21956.2 &      23690.6 &       25375.0 &      20365.6 &      625.0 \\
+ms\_pacman       &      818.0 &          1685.9 &   1146.1 &       1538.9 &       1354.5 &        1401.9 &       1227.8 &      365.8 \\
+name\_this\_game  &     1992.7 &          2614.5 &   2377.7 &       2155.2 &       2570.3 &        2471.9 &       2314.8 &     2314.7 \\
+pong            &       -8.5 &            16.7 &     21.0 &          6.6 &         14.2 &          -2.0 &         21.0 &      -21.0 \\
+private\_eye     &       98.9 &            82.8 &    100.0 &         96.9 &        100.0 &          99.3 &       4038.7 &      277.4 \\
+qbert           &      702.7 &           869.9 &    802.7 &       1721.9 &       2322.3 &         812.5 &        747.3 &      451.6 \\
+riverraid       &     1929.4 &          2274.5 &   2158.4 &       2307.5 &       2221.2 &        1759.8 &       1923.4 &      689.5 \\
+road\_runner     &     8484.4 &          2857.8 &  10676.6 &       4104.7 &      14978.1 &        1342.2 &       8560.9 &     1154.7 \\
+seaquest        &      575.3 &           361.2 &    950.6 &        576.6 &        734.1 &         659.1 &        836.6 &      331.2 \\
+up\_n\_down       &     2071.1 &          1315.2 &   3798.3 &       1622.0 &       1999.4 &        2728.0 &       5193.1 &      920.9 \\
+yars\_revenge    &     3380.5 &          4230.8 &   3914.1 &       3314.5 &       3896.3 &        2848.1 &       6673.1 &     4516.3 \\
+\bottomrule
+\end{tabular}
+
+\end{document}
