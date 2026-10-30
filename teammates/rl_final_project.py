@@ -14,7 +14,7 @@ Preprocessed Pong env following the paper: frame skip 4, 105x80 RGB frames, 4-fr
 ### 1.1 Install and imports
 """
 
-!pip install -q "gymnasium[atari]" opencv-python-headless
+#!pip install -q "gymnasium[atari]" opencv-python-headless
 
 from dataclasses import dataclass
 from collections import Counter
